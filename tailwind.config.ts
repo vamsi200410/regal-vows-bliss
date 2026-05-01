@@ -76,9 +76,9 @@ export default {
         "flicker": { "0%, 100%": { filter: "drop-shadow(0 0 18px hsl(45 95% 70% / 0.7))" }, "50%": { filter: "drop-shadow(0 0 28px hsl(38 95% 65% / 0.95))" } },
         "slow-spin": { from: { transform: "rotate(0deg)" }, to: { transform: "rotate(360deg)" } },
         "couple-slide": {
-          "0%, 26%":   { transform: "translateX(0%)" },
-          "33.33%, 59.33%": { transform: "translateX(-33.3333%)" },
-          "66.66%, 92.66%": { transform: "translateX(-66.6666%)" },
+          "0%, 25%":   { transform: "translateX(0%)" },
+          "33.33%, 58.33%": { transform: "translateX(-33.3333%)" },
+          "66.66%, 91.66%": { transform: "translateX(-66.6666%)" },
           "100%":      { transform: "translateX(-100%)" },
         },
       },

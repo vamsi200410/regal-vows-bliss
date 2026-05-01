@@ -1,10 +1,11 @@
 import { useReveal } from "@/hooks/use-reveal";
 import { Lanterns } from "@/components/wedding/Lanterns";
+import { MusicPlayer } from "@/components/wedding/MusicPlayer";
 import { Ornament } from "@/components/wedding/Ornament";
 import { Countdown } from "@/components/wedding/Countdown";
 import { Button } from "@/components/ui/button";
 import {
-  MapPin, MessageCircle, Calendar, Cloud, Shirt, Hotel, Heart, Sparkles,
+  MapPin, MessageCircle, Calendar, Cloud, Shirt, Hotel, Heart, Sparkles, Phone,
 } from "lucide-react";
 import heroTemple from "@/assets/hero-temple.jpg";
 import couple1 from "@/assets/couple-1.jpeg";
@@ -19,7 +20,7 @@ import textureOlive from "@/assets/texture-olive.png";
 import textureNavy from "@/assets/texture-navy.png";
 
 const WEDDING_DATE = "2026-05-08T08:00:00";
-const WHATSAPP_NUMBER = "917780698061";
+const WHATSAPP_NUMBER = "917731807609";
 const WHATSAPP_MSG = encodeURIComponent(
   "Namaste! I would love to RSVP for Uma & VasudevaRao's wedding celebrations 🌸"
 );
@@ -98,12 +99,14 @@ const Section = ({
 const Index = () => {
   return (
     <main className="relative overflow-x-hidden">
+      <MusicPlayer />
       {/* HERO */}
       <header className="relative min-h-screen flex items-start justify-center overflow-hidden pt-16 md:pt-24">
         <img
           src={heroTemple}
           alt="Painterly South Indian temple gopuram against a deep blue sky and sunset horizon"
           className="absolute inset-0 w-full h-full object-cover object-bottom"
+          style={{ animation: "hero-zoom 20s ease-out forwards" }}
           width={1280}
           height={1920}
         />
@@ -111,30 +114,44 @@ const Index = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-transparent to-background/60" />
         <Lanterns />
 
-        <div className="relative z-10 text-center px-6 animate-fade-in max-w-3xl">
+        <div className="relative z-10 text-center px-6 max-w-3xl">
           <h1 className="leading-none">
             <span
               className="block font-display tracking-[0.18em] text-foreground text-5xl sm:text-6xl md:text-7xl lg:text-8xl"
-              style={{ fontFamily: "'Italiana', serif", textShadow: "0 4px 30px hsl(215 60% 10% / 0.5)" }}
+              style={{ 
+                fontFamily: "'Italiana', serif", 
+                textShadow: "0 4px 30px hsl(215 60% 10% / 0.5)",
+                animation: "name-reveal 1.2s 0.2s both"
+              }}
             >
               UMA
             </span>
             <span
               className="block my-3 md:my-5 text-foreground/85 tracking-[0.5em] text-xs sm:text-sm md:text-base font-light uppercase"
-              style={{ fontFamily: "'Marcellus', serif" }}
+              style={{ 
+                fontFamily: "'Marcellus', serif",
+                animation: "name-reveal 1.2s 0.5s both"
+              }}
             >
               weds
             </span>
             <span
               className="block font-display tracking-[0.14em] text-foreground text-4xl sm:text-5xl md:text-6xl lg:text-7xl"
-              style={{ fontFamily: "'Italiana', serif", textShadow: "0 4px 30px hsl(215 60% 10% / 0.5)" }}
+              style={{ 
+                fontFamily: "'Italiana', serif", 
+                textShadow: "0 4px 30px hsl(215 60% 10% / 0.5)",
+                animation: "name-reveal 1.2s 0.8s both"
+              }}
             >
               VASUDEVARAO
             </span>
           </h1>
           <p
             className="mt-8 text-foreground/85 tracking-[0.35em] text-[10px] sm:text-xs uppercase"
-            style={{ fontFamily: "'Marcellus', serif" }}
+            style={{ 
+              fontFamily: "'Marcellus', serif",
+              animation: "name-reveal 1.2s 1.1s both"
+            }}
           >
             8 · 5 · 2026&nbsp;
           </p>
@@ -181,9 +198,9 @@ const Index = () => {
       {/* ABOUT THE COUPLE */}
       <Section id="couple" texture={texturePink} tint="hsl(335 45% 55%)">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 md:gap-20 items-center">
-          <div className="relative mx-auto w-full max-w-[460px]">
-            <div className="absolute -inset-6 bg-gradient-to-br from-primary/30 to-accent/30 blur-3xl rounded-2xl" />
-            <div className="relative overflow-hidden rounded-2xl border-2 border-gold shadow-deep aspect-[3/4]">
+          <div className="relative mx-auto w-full max-w-[460px]" style={{ animation: "premium-reveal 1.2s 0.2s both" }}>
+            <div className="absolute -inset-6 bg-gradient-to-br from-primary/30 to-accent/30 blur-3xl rounded-2xl animate-pulse" />
+            <div className="relative overflow-hidden rounded-2xl border-2 border-gold shadow-deep aspect-[3/4] hover:scale-[1.02] transition-transform duration-700">
               <div className="flex h-full w-[300%] animate-couple-slide">
                 <img src={couple1} alt="Uma and VasudevaRao in traditional wedding attire" loading="lazy" width={1080} height={1600} className="w-1/3 h-full object-cover flex-shrink-0" />
                 <img src={couple2} alt="Uma and VasudevaRao sharing a moment" loading="lazy" width={1080} height={1600} className="w-1/3 h-full object-cover flex-shrink-0" />
@@ -192,22 +209,33 @@ const Index = () => {
             </div>
           </div>
           <div>
-            <p className="text-primary tracking-[0.4em] text-xs uppercase mb-3 flex items-center gap-2">
+            <p 
+              className="text-primary tracking-[0.4em] text-xs uppercase mb-3 flex items-center gap-2"
+              style={{ animation: "name-reveal 1s 0.4s both" }}
+            >
               <Heart size={14} /> The Couple
             </p>
-            <h2 className="font-display text-4xl md:text-5xl text-gold-gradient mb-6">Meet the Bride and Groom</h2>
-            <Ornament className="!justify-start mb-6 [&::before]:hidden [&::after]:max-w-[60px]" />
+            <h2 
+              className="font-display text-4xl md:text-5xl text-gold-gradient mb-6"
+              style={{ animation: "name-reveal 1s 0.6s both" }}
+            >
+              Meet the Bride and Groom
+            </h2>
+            <Ornament 
+              className="!justify-start mb-6 [&::before]:hidden [&::after]:max-w-[60px]" 
+              style={{ animation: "name-reveal 1s 0.8s both" }}
+            />
             <div className="space-y-5 text-foreground/85 text-lg leading-relaxed font-serif">
-              <p>
+              <p style={{ animation: "name-reveal 1.2s 1s both" }}>
                 We are both so delighted that you are able to join us in celebrating what we hope will be
                 one of the happiest days of our lives.
               </p>
-              <p>
+              <p style={{ animation: "name-reveal 1.2s 1.2s both" }}>
                 The affection shown to us by so many people since our Nichayathartham has been incredibly
                 moving, and has touched us both deeply. We would like to take this opportunity to thank
                 everyone most sincerely for their kindness.
               </p>
-              <p>
+              <p style={{ animation: "name-reveal 1.2s 1.4s both" }}>
                 We are looking forward to seeing you at the wedding.
               </p>
             </div>
@@ -227,8 +255,8 @@ const Index = () => {
             {events.map((e, idx) => (
               <article
                 key={e.name}
-                className="group relative h-[360px] sm:h-[440px] md:h-[500px] flex items-center justify-center transition-all duration-700 hover:-translate-y-2"
-                style={{ animation: `fade-in 0.9s ${idx * 0.15}s both` }}
+                className="group relative h-[360px] sm:h-[440px] md:h-[500px] flex items-center justify-center transition-all duration-700"
+                style={{ animation: `premium-reveal 1.2s ${idx * 0.2}s both` }}
               >
                 {/* Floral geometric frame */}
                 <img
@@ -369,10 +397,26 @@ const Index = () => {
         <div className="max-w-3xl mx-auto text-center relative">
           <div className="absolute inset-0 bg-gradient-radial-glow opacity-50" style={{ background: "var(--gradient-radial-glow)" }} />
           <div className="relative">
-            <p className="text-primary tracking-[0.4em] text-xs uppercase mb-3">Kindly Respond</p>
-            <h2 className="font-display text-4xl md:text-5xl text-gold-gradient mb-6">Will You Join Us?</h2>
-            <Ornament className="mb-8" />
-            <p className="text-foreground/85 text-lg max-w-xl mx-auto mb-10 leading-relaxed font-serif">
+            <p 
+              className="text-primary tracking-[0.4em] text-xs uppercase mb-3"
+              style={{ animation: "name-reveal 1s 0.2s both" }}
+            >
+              Kindly Respond
+            </p>
+            <h2 
+              className="font-display text-4xl md:text-5xl text-gold-gradient mb-6"
+              style={{ animation: "name-reveal 1s 0.4s both" }}
+            >
+              Will You Join Us?
+            </h2>
+            <Ornament 
+              className="mb-8" 
+              style={{ animation: "name-reveal 1s 0.6s both" }}
+            />
+            <p 
+              className="text-foreground/85 text-lg max-w-xl mx-auto mb-10 leading-relaxed font-serif"
+              style={{ animation: "name-reveal 1s 0.8s both" }}
+            >
               Your presence would mean the world. Tap below to RSVP directly via WhatsApp —
               we will get back to you with all the details.
             </p>
@@ -380,13 +424,45 @@ const Index = () => {
               asChild
               size="lg"
               className="group relative bg-gradient-to-r from-primary via-primary-glow to-primary text-primary-foreground font-display tracking-widest uppercase px-10 py-7 text-base rounded-full shadow-gold hover:shadow-glow transition-all duration-500 hover:scale-105"
-              style={{ backgroundSize: "200% auto", animation: "shimmer 4s linear infinite" }}
+              style={{ 
+                backgroundSize: "200% auto", 
+                animation: "shimmer 4s linear infinite, name-reveal 1s 1s both" 
+              }}
             >
               <a href={`https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MSG}`} target="_blank" rel="noreferrer">
                 <MessageCircle className="mr-2" /> Contact on WhatsApp
               </a>
             </Button>
-            <p className="mt-6 text-muted-foreground text-sm tracking-wider">
+            <div 
+              className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6 md:gap-10"
+              style={{ animation: "name-reveal 1s 1.2s both" }}
+            >
+              <div className="space-y-1">
+                <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-2">Or call us at</p>
+                <div className="flex flex-col sm:flex-row items-center gap-4 md:gap-8">
+                  <a 
+                    href="tel:7702902407" 
+                    className="group flex items-center gap-2 text-foreground/80 hover:text-primary transition-colors duration-300"
+                  >
+                    <div className="p-2 rounded-full bg-primary/5 group-hover:bg-primary/10 transition-colors">
+                      <Phone size={14} className="text-primary" />
+                    </div>
+                    <span className="font-serif tracking-widest text-sm md:text-base">7702902407</span>
+                  </a>
+                  <div className="hidden sm:block w-px h-4 bg-gold/30" />
+                  <a 
+                    href="tel:9121189750" 
+                    className="group flex items-center gap-2 text-foreground/80 hover:text-primary transition-colors duration-300"
+                  >
+                    <div className="p-2 rounded-full bg-primary/5 group-hover:bg-primary/10 transition-colors">
+                      <Phone size={14} className="text-primary" />
+                    </div>
+                    <span className="font-serif tracking-widest text-sm md:text-base">9121189750</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <p className="mt-10 text-muted-foreground text-[10px] md:text-xs tracking-wider opacity-60">
               Kindly respond by 8<sup>th</sup> May 2026
             </p>
           </div>
@@ -394,13 +470,57 @@ const Index = () => {
       </Section>
 
       {/* FOOTER */}
-      <footer className="relative py-16 px-6 text-center border-t border-gold/30">
-        <Ornament className="mb-6" />
-        <p className="font-display text-2xl text-gold-gradient">Uma &amp; VasudevaRao</p>
-        <p className="font-serif-italic text-muted-foreground mt-2">Forever begins on 8.5.2026</p>
-        <p className="mt-6 text-xs tracking-[0.3em] uppercase text-muted-foreground/70">
-          Made with love &middot;
-        </p>
+      <footer className="relative py-24 px-6 text-center border-t border-gold/20 overflow-hidden">
+        {/* Floating Hearts Background */}
+        <div className="absolute inset-0 pointer-events-none opacity-40">
+          {[...Array(12)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute animate-float-up text-primary/40"
+              style={{
+                left: `${Math.random() * 100}%`,
+                bottom: "-20px",
+                animationDelay: `${Math.random() * 15}s`,
+                animationDuration: `${10 + Math.random() * 10}s`,
+                fontSize: `${12 + Math.random() * 16}px`,
+              }}
+            >
+              <Heart fill="currentColor" />
+            </div>
+          ))}
+        </div>
+
+        <div className="relative z-10 max-w-4xl mx-auto">
+          <Ornament className="mb-8" style={{ animation: "name-reveal 1.2s 0.2s both" }} />
+          
+          <h2 
+            className="font-display text-4xl md:text-5xl text-gold-gradient mb-6"
+            style={{ animation: "name-reveal 1.2s 0.4s both" }}
+          >
+            Thank You
+          </h2>
+          
+          <p 
+            className="font-serif-italic text-lg md:text-xl text-foreground/80 mb-12 max-w-lg mx-auto leading-relaxed"
+            style={{ animation: "name-reveal 1.2s 0.6s both" }}
+          >
+            We can't wait to share our special day with you. 
+            Your love and blessings are our greatest gift.
+          </p>
+
+          <div className="pt-12 border-t border-gold/10 inline-block">
+            <p className="font-display text-2xl text-gold-gradient" style={{ animation: "name-reveal 1.2s 0.8s both" }}>
+              Uma &amp; VasudevaRao
+            </p>
+            <p className="font-serif-italic text-muted-foreground mt-2" style={{ animation: "name-reveal 1.2s 1s both" }}>
+              Forever begins on 8.5.2026
+            </p>
+          </div>
+
+          <p className="mt-16 text-[10px] tracking-[0.4em] uppercase text-muted-foreground/50" style={{ animation: "name-reveal 1.2s 1.2s both" }}>
+            Made with Love &middot; 2026
+          </p>
+        </div>
       </footer>
     </main>
   );

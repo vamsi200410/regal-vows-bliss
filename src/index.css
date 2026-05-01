@@ -213,3 +213,36 @@
 .animate-card-breathe {
   animation: card-breathe 3.5s ease-in-out infinite;
 }
+
+/* Background image slow zoom */
+@keyframes hero-zoom {
+  0%   { transform: scale(1); }
+  100% { transform: scale(1.1); }
+}
+
+/* Premium smooth reveal */
+@keyframes premium-reveal {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.98);
+    filter: blur(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  filter: blur(10px);
+  transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.in-view {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
